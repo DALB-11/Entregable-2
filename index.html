@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFlow | Organiza tu día</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Iconos Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- MENÚ LATERAL -->
+    <aside class="sidebar">
+      <div class="brand">
+        <i class="bi bi-mortarboard-fill"></i>
+        <span>CampusFlow</span>
+      </div>
+
+      <p class="sidebar-label">MI ESPACIO</p>
+
+      <nav class="nav flex-column gap-2">
+        <a class="nav-link active" href="#inicio">
+          <i class="bi bi-grid-1x2"></i> Inicio
+        </a>
+        <a class="nav-link" href="#calendario">
+          <i class="bi bi-calendar-week"></i> Calendario
+        </a>
+        <a class="nav-link" href="#pendientes">
+          <i class="bi bi-check2-square"></i> Pendientes
+        </a>
+        <a class="nav-link" href="#musica">
+          <i class="bi bi-music-note-beamed"></i> Mi música
+        </a>
+        <a class="nav-link" href="#investigacion">
+          <i class="bi bi-book"></i> Bootstrap 5
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <i class="bi bi-lightning-charge-fill"></i>
+        Organiza mejor tu tiempo.
+      </div>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="main-content">
+
+      <!-- BARRA SUPERIOR -->
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">TU ORGANIZADOR UNIVERSITARIO</p>
+          <h1>Mi espacio personal</h1>
+          <p id="fechaActual" class="text-secondary mb-0"></p>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn btn-outline-primary"
+                  id="btnNotificaciones"
+                  data-bs-toggle="tooltip"
+                  data-bs-title="Activar avisos del navegador">
+            <i class="bi bi-bell"></i>
+          </button>
+
+          <span class="avatar">EBC</span>
+        </div>
+      </header>
+
+      <!-- INICIO -->
+      <section id="inicio">
+
+        <div class="welcome-banner">
+          <div>
+            <span class="banner-tag">TU DÍA, BAJO CONTROL</span>
+            <h2>¡Organiza tu día de manera inteligente!</h2>
+            <p>
+              Combina tus clases, tareas y actividades personales
+              para aprovechar mejor cada hora.
+            </p>
+            <a href="#calendario" class="btn btn-light">
+              Ver mi calendario
+            </a>
+          </div>
+          <i class="bi bi-calendar2-check banner-icon"></i>
+        </div>
+
+        <!-- INDICADORES -->
+        <div class="row g-3 mt-2">
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <i class="bi bi-calendar-event stat-icon blue"></i>
+              <p>Actividades de hoy</p>
+              <h3 id="totalActividades">0</h3>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <i class="bi bi-list-check stat-icon orange"></i>
+              <p>Pendientes</p>
+              <h3 id="totalPendientes">0</h3>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <i class="bi bi-check-circle stat-icon green"></i>
+              <p>Completadas</p>
+              <h3 id="totalCompletadas">0</h3>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6">
+            <div class="stat-card">
+              <i class="bi bi-graph-up stat-icon purple"></i>
+              <p>Productividad</p>
+              <h3 id="productividad">0%</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- AGENDA Y RECOMENDACIONES -->
+        <div class="row g-4 mt-1">
+          <div class="col-lg-7">
+            <div class="content-card">
+              <div class="section-heading">
+                <h3><i class="bi bi-clock-history"></i> Mi agenda de hoy</h3>
+                <span class="badge text-bg-primary">Hoy</span>
+              </div>
+
+              <div id="agendaHoy"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="content-card">
+              <div class="section-heading">
+                <h3><i class="bi bi-stars"></i> Asistente inteligente</h3>
+              </div>
+
+              <p class="text-secondary">
+                CampusFlow analiza tus horarios para encontrar
+                oportunidades de aprovechar tu tiempo.
+              </p>
+
+              <div id="recomendaciones"></div>
+
+              <button class="btn btn-primary w-100 mt-3"
+                      id="btnAnalizar">
+                <i class="bi bi-magic"></i>
+                Analizar mi día
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALENDARIO -->
+      <section id="calendario" class="page-section">
+        <div class="section-heading">
+          <div>
+            <h2>Mi calendario</h2>
+            <p class="text-secondary">
+              Compara tus horarios escolares y personales.
+            </p>
+          </div>
+
+          <button class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalActividad">
+            <i class="bi bi-plus-lg"></i> Nueva actividad
+          </button>
+        </div>
+
+        <div class="content-card">
+          <div class="section-heading">
+            <h3>Agenda semanal</h3>
+            <span class="badge text-bg-light">
+              Escuela + Vida personal
+            </span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table calendar-table">
+              <thead>
+                <tr>
+                  <th>Horario</th>
+                  <th>Lunes</th>
+                  <th>Martes</th>
+                  <th>Miércoles</th>
+                  <th>Jueves</th>
+                  <th>Viernes</th>
+                  <th>Sábado</th>
+                  <th>Domingo</th>
+                </tr>
+              </thead>
+              <tbody id="tablaCalendario"></tbody>
+            </table>
+          </div>
+
+          <div class="calendar-legend">
+            <span><i class="legend-dot school"></i> Escuela</span>
+            <span><i class="legend-dot personal"></i> Personal</span>
+            <span><i class="legend-dot study"></i> Estudio</span>
+          </div>
+        </div>
+
+        <div class="content-card mt-4">
+          <h3>Mis actividades registradas</h3>
+          <p class="text-secondary">
+            Haz clic en los detalles para consultar cada actividad.
+          </p>
+          <div id="listaActividades"></div>
+        </div>
+      </section>
+
+      <!-- PENDIENTES -->
+      <section id="pendientes" class="page-section">
+        <div class="section-heading">
+          <div>
+            <h2>Mis pendientes</h2>
+            <p class="text-secondary">
+              Organiza tus entregas y compromisos.
+            </p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <form id="formPendiente" class="row g-3">
+            <div class="col-md-5">
+              <label for="nombrePendiente" class="form-label">
+                Nuevo pendiente
+              </label>
+              <input type="text" id="nombrePendiente"
+                     class="form-control"
+                     placeholder="Ej. Terminar proyecto de programación"
+                     required maxlength="100">
+            </div>
+
+            <div class="col-md-3">
+              <label for="fechaPendiente" class="form-label">
+                Fecha límite
+              </label>
+              <input type="date" id="fechaPendiente"
+                     class="form-control" required>
+            </div>
+
+            <div class="col-md-2">
+              <label for="prioridadPendiente" class="form-label">
+                Prioridad
+              </label>
+              <select id="prioridadPendiente" class="form-select">
+                <option value="Alta">Alta</option>
+                <option value="Media" selected>Media</option>
+                <option value="Baja">Baja</option>
+              </select>
+            </div>
+
+            <div class="col-md-2 d-flex align-items-end">
+              <button class="btn btn-primary w-100" type="submit">
+                Agregar
+              </button>
+            </div>
+          </form>
+
+          <hr>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>Lista de tareas</h3>
+            <span id="contadorTareas" class="text-secondary"></span>
+          </div>
+
+          <div class="progress my-3" style="height: 10px;">
+            <div class="progress-bar" id="barraProgreso"
+                 style="width: 0%"></div>
+          </div>
+
+          <div id="listaPendientes"></div>
+        </div>
+      </section>
+
+      <!-- MÚSICA -->
+      <section id="musica" class="page-section">
+        <h2>Tu música para cada momento</h2>
+        <p class="text-secondary">
+          Encuentra una playlist según la actividad que realizarás.
+        </p>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-3">
+            <div class="music-card">
+              <div class="music-art study-art">
+                <i class="bi bi-book-half"></i>
+              </div>
+              <h3>Concentración</h3>
+              <p>Para estudiar y realizar tareas.</p>
+              <button class="btn btn-outline-primary w-100 playlist-btn"
+                      data-query="deep focus study">
+                <i class="bi bi-spotify"></i> Escuchar
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="music-card">
+              <div class="music-art gym-art">
+                <i class="bi bi-lightning-charge"></i>
+              </div>
+              <h3>Entrenamiento</h3>
+              <p>Energía para tus rutinas de ejercicio.</p>
+              <button class="btn btn-outline-primary w-100 playlist-btn"
+                      data-query="gym workout motivation">
+                <i class="bi bi-spotify"></i> Escuchar
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="music-card">
+              <div class="music-art relax-art">
+                <i class="bi bi-moon-stars"></i>
+              </div>
+              <h3>Relajación</h3>
+              <p>Para descansar después de clases.</p>
+              <button class="btn btn-outline-primary w-100 playlist-btn"
+                      data-query="relaxing chill music">
+                <i class="bi bi-spotify"></i> Escuchar
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="music-card">
+              <div class="music-art travel-art">
+                <i class="bi bi-headphones"></i>
+              </div>
+              <h3>Camino a clases</h3>
+              <p>Música para tus traslados diarios.</p>
+              <button class="btn btn-outline-primary w-100 playlist-btn"
+                      data-query="daily commute playlist">
+                <i class="bi bi-spotify"></i> Escuchar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card mt-4">
+          <h3>Recomendación musical inteligente</h3>
+          <p id="musicaRecomendada">
+            Analizaremos tu próxima actividad para sugerirte música.
+          </p>
+          <button class="btn btn-primary" id="btnMusica">
+            Recomendar música
+          </button>
+        </div>
+      </section>
+
+      <!-- INVESTIGACIÓN BOOTSTRAP -->
+      <section id="investigacion" class="page-section">
+        <h2>Investigación de Bootstrap 5</h2>
+        <p class="text-secondary">
+          Componentes utilizados para mejorar la experiencia
+          de usuario en CampusFlow.
+        </p>
+
+        <div class="content-card">
+          <h3>Tabla comparativa</h3>
+
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Ejemplo en código HTML</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Popover</td>
+                  <td>
+                    Ventana emergente que presenta información
+                    adicional sobre una actividad.
+                  </td>
+                  <td>
+                    <code>&lt;button data-bs-toggle="popover"
+                    data-bs-content="Clase de programación"&gt;
+                    Detalles&lt;/button&gt;</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tooltip</td>
+                  <td>
+                    Mensaje breve que explica la función
+                    de un botón al pasar el cursor o enfocarlo.
+                  </td>
+                  <td>
+                    <code>&lt;button data-bs-toggle="tooltip"
+                    data-bs-title="Agregar actividad"&gt;
+                    Agregar&lt;/button&gt;</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Toast</td>
+                  <td>
+                    Notificación temporal que confirma
+                    acciones y muestra avisos.
+                  </td>
+                  <td>
+                    <code>&lt;div class="toast" role="status"&gt;
+                    &lt;div class="toast-body"&gt;
+                    Guardado correctamente
+                    &lt;/div&gt;&lt;/div&gt;</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="small text-secondary">
+            Los ejemplos muestran la estructura HTML básica.
+            La aplicación utiliza JavaScript para inicializar
+            y mostrar estos componentes.
+          </p>
+        </div>
+
+        <div class="content-card mt-4">
+          <h3>Aplicación en el proyecto</h3>
+          <p>
+            CampusFlow utiliza Popovers para consultar detalles
+            de las actividades, Tooltips para explicar botones
+            y Toasts para confirmar acciones o advertir
+            sobre conflictos de horarios.
+          </p>
+          <p>
+            Estos componentes ayudan a evitar confusiones,
+            presentan información sin saturar la pantalla
+            y permiten que el estudiante comprenda
+            mejor el funcionamiento de la aplicación.
+          </p>
+
+          <h3>Prompt utilizado</h3>
+          <div class="prompt-box">
+            Desarrolla una aplicación web para estudiantes
+            universitarios utilizando HTML, CSS, JavaScript
+            y Bootstrap 5. Incluye un calendario académico
+            y personal, administrador de pendientes,
+            recomendaciones de organización y música.
+            Integra Popovers, Tooltips y Toasts funcionales.
+            Agrega una tabla comparativa con nombre,
+            descripción y ejemplos HTML de los componentes,
+            explicando cómo mejoran la experiencia del usuario.
+          </div>
+
+          <h3 class="mt-4">Fuentes oficiales</h3>
+          <ul>
+            <li>
+              <a href="https://getbootstrap.com/docs/5.3/components/popovers/"
+                 target="_blank" rel="noopener noreferrer">
+                Bootstrap 5 - Popovers
+              </a>
+            </li>
+            <li>
+              <a href="https://getbootstrap.com/docs/5.3/components/tooltips/"
+                 target="_blank" rel="noopener noreferrer">
+                Bootstrap 5 - Tooltips
+              </a>
+            </li>
+            <li>
+              <a href="https://getbootstrap.com/docs/5.3/components/toasts/"
+                 target="_blank" rel="noopener noreferrer">
+                Bootstrap 5 - Toasts
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        CampusFlow | Proyecto académico EBC | Bootstrap 5
+      </footer>
+    </main>
+  </div>
+
+  <!-- MODAL NUEVA ACTIVIDAD -->
+  <div class="modal fade" id="modalActividad" tabindex="-1"
+       aria-labelledby="tituloModalActividad" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tituloModalActividad">
+            Nueva actividad
+          </h5>
+          <button type="button" class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Cerrar"></button>
+        </div>
+
+        <form id="formActividad">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="actividadNombre" class="form-label">
+                Nombre de la actividad
+              </label>
+              <input type="text" id="actividadNombre"
+                     class="form-control" required maxlength="80">
+            </div>
+
+            <div class="mb-3">
+              <label for="actividadTipo" class="form-label">
+                Tipo de actividad
+              </label>
+              <select id="actividadTipo" class="form-select">
+                <option value="Escuela">Escuela</option>
+                <option value="Personal">Personal</option>
+                <option value="Estudio">Estudio</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="actividadDia" class="form-label">Día</label>
+              <select id="actividadDia" class="form-select">
+                <option value="1">Lunes</option>
+                <option value="2">Martes</option>
+                <option value="3">Miércoles</option>
+                <option value="4">Jueves</option>
+                <option value="5">Viernes</option>
+                <option value="6">Sábado</option>
+                <option value="0">Domingo</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label for="actividadInicio" class="form-label">
+                  Inicio
+                </label>
+                <input type="time" id="actividadInicio"
+                       class="form-control" required>
+              </div>
+
+              <div class="col-6 mb-3">
+                <label for="actividadFin" class="form-label">
+                  Finalización
+                </label>
+                <input type="time" id="actividadFin"
+                       class="form-control" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light"
+                    data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">
+              Guardar actividad
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICACIONES TOAST -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3"
+       id="contenedorToasts" style="z-index: 1100;">
+  </div>
+
+  <!-- BOOTSTRAP JAVASCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JAVASCRIPT PROPIO -->
+  <script src="script.js"></script>
+</body>
+</html>

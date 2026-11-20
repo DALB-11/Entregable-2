@@ -1,0 +1,1121 @@
+/* ==========================================
+   STYLE.CSS - ORGANIZADOR ESTUDIANTIL
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --background: #f4f6fb;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    --radius: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   BARRA DE NAVEGACION
+   ========================================== */
+
+.navbar {
+    background: var(--surface) !important;
+    padding: 15px 25px;
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary) !important;
+}
+
+.navbar-brand:hover {
+    color: var(--primary-dark) !important;
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary) !important;
+}
+
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ========================================== */
+
+.container,
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main {
+    max-width: 1400px;
+    margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--text);
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p {
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   BIENVENIDA Y ENCABEZADO
+   ========================================== */
+
+.welcome-section,
+.bienvenida,
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color: white;
+    padding: 35px;
+    border-radius: var(--radius);
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+}
+
+.welcome-section h1,
+.welcome-section p,
+.bienvenida h1,
+.bienvenida p,
+.hero-section h1,
+.hero-section p {
+    color: white;
+}
+
+.welcome-section h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   TARJETAS GENERALES
+   ========================================== */
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 22px;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 22px;
+}
+
+.card-title {
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   RESUMEN DEL DIA
+   ========================================== */
+
+.dashboard-card,
+.resumen-card,
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.stat-card h3,
+.dashboard-card h3 {
+    font-size: 28px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.stat-card p,
+.dashboard-card p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: #eef2ff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   CALENDARIO ESCOLAR Y PERSONAL
+   ========================================== */
+
+.calendar,
+.calendario,
+.calendar-container {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.calendar-header h2,
+.calendar-header h3 {
+    margin-bottom: 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.calendar-day,
+.dia-calendario {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-height: 90px;
+    padding: 10px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.calendar-day:hover,
+.dia-calendario:hover {
+    background: #eef2ff;
+    border-color: var(--primary);
+    cursor: pointer;
+}
+
+.calendar-day.today,
+.dia-calendario.hoy {
+    background: #eef2ff;
+    border: 2px solid var(--primary);
+}
+
+.calendar-day.selected {
+    background: var(--primary);
+    color: white;
+}
+
+.calendar-event,
+.evento {
+    background: #e0e7ff;
+    color: var(--primary-dark);
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+.evento-escolar {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.evento-personal {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.evento-importante {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* ==========================================
+   HORARIO E ITINERARIO
+   ========================================== */
+
+.schedule,
+.horario,
+.itinerario {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+
+.schedule-item,
+.horario-item,
+.actividad-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-left: 4px solid var(--primary);
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+.schedule-item:hover,
+.actividad-item:hover {
+    background: #eef2ff;
+    transform: translateX(3px);
+}
+
+.schedule-time,
+.hora-actividad {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    min-width: 75px;
+}
+
+.schedule-content,
+.actividad-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.schedule-content h4,
+.actividad-info h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.schedule-content p,
+.actividad-info p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.actividad-escuela {
+    border-left-color: #3b82f6;
+}
+
+.actividad-personal {
+    border-left-color: var(--success);
+}
+
+.actividad-pendiente {
+    border-left-color: var(--warning);
+}
+
+.actividad-urgente {
+    border-left-color: var(--danger);
+}
+
+/* ==========================================
+   LISTA DE TAREAS Y PENDIENTES
+   ========================================== */
+
+.todo-list,
+.lista-pendientes,
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item,
+.task-item,
+.pendiente-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.todo-item:hover,
+.task-item:hover,
+.pendiente-item:hover {
+    background: #eef2ff;
+}
+
+.todo-item input[type="checkbox"],
+.task-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.todo-item.completed,
+.task-item.completed,
+.pendiente-item.completado {
+    opacity: 0.65;
+}
+
+.todo-item.completed span,
+.task-item.completed span,
+.pendiente-item.completado span {
+    text-decoration: line-through;
+}
+
+.task-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.task-date {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.priority-high,
+.prioridad-alta {
+    color: var(--danger);
+}
+
+.priority-medium,
+.prioridad-media {
+    color: var(--warning);
+}
+
+.priority-low,
+.prioridad-baja {
+    color: var(--success);
+}
+
+/* ==========================================
+   RECOMENDACIONES INTELIGENTES
+   ========================================== */
+
+.recommendation,
+.recomendacion,
+.suggestion-card {
+    background: #eef2ff;
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.recommendation h4,
+.recomendacion h4 {
+    font-size: 16px;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
+.recommendation p,
+.recomendacion p {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.alert {
+    border: none;
+    border-radius: 12px;
+    padding: 15px 18px;
+}
+
+.alert-info {
+    background: #e0f2fe;
+    color: #075985;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.alert-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.alert-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ==========================================
+   MUSICA Y PLAYLISTS
+   ========================================== */
+
+.music-card,
+.playlist-card,
+.musica-card {
+    background: linear-gradient(
+        135deg,
+        #1e293b,
+        #334155
+    );
+    color: white;
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.music-card h3,
+.music-card h4,
+.music-card p,
+.playlist-card h3,
+.playlist-card h4,
+.playlist-card p,
+.musica-card h3,
+.musica-card p {
+    color: white;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.playlist-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.playlist-cover {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.playlist-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.playlist-info h5 {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.playlist-info p {
+    color: #cbd5e1;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.music-btn,
+.btn-play {
+    background: #1db954;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.music-btn:hover,
+.btn-play:hover {
+    background: #17a34a;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+
+.btn {
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* ==========================================
+   FORMULARIOS
+   ========================================== */
+
+.form-control,
+.form-select {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 14px;
+    background: white;
+    transition: 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    outline: none;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* ==========================================
+   PROGRESO Y PRODUCTIVIDAD
+   ========================================== */
+
+.progress {
+    height: 12px;
+    border-radius: 20px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.productivity-score {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* ==========================================
+   ETIQUETAS Y ESTADOS
+   ========================================== */
+
+.badge {
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-success {
+    background-color: var(--success) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning) !important;
+}
+
+.bg-danger {
+    background-color: var(--danger) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ==========================================
+   TABLAS DE HORARIOS
+   ========================================== */
+
+.table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: #eef2ff;
+}
+
+.table thead th {
+    color: var(--primary-dark);
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 15px;
+}
+
+.table tbody td {
+    padding: 14px 15px;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* ==========================================
+   MODALES
+   ========================================== */
+
+.modal-content {
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border);
+    padding: 18px 25px;
+}
+
+/* ==========================================
+   NOTIFICACIONES Y RECORDATORIOS
+   ========================================== */
+
+.notification,
+.notificacion,
+.reminder {
+    background: white;
+    border-left: 4px solid var(--warning);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+}
+
+.notification h5,
+.reminder h5 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.notification p,
+.reminder p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.notification.urgent,
+.reminder.urgent {
+    border-left-color: var(--danger);
+}
+
+/* ==========================================
+   PIE DE PAGINA
+   ========================================== */
+
+footer,
+.footer {
+    background: white;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 22px;
+    margin-top: 35px;
+}
+
+footer p,
+.footer p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   ANIMACIONES
+   ========================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO - TABLETS
+   ========================================== */
+
+@media (max-width: 992px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .welcome-section,
+    .bienvenida,
+    .hero-section {
+        padding: 25px;
+    }
+
+    .calendar-day,
+    .dia-calendario {
+        min-height: 75px;
+        padding: 7px;
+    }
+
+    .card-body {
+        padding: 18px;
+    }
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO - CELULARES
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .container,
+    .container-fluid {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .welcome-section,
+    .bienvenida,
+    .hero-section {
+        padding: 22px;
+        border-radius: 14px;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    .calendar,
+    .calendario,
+    .calendar-container {
+        padding: 12px;
+    }
+
+    .calendar-grid {
+        gap: 4px;
+    }
+
+    .calendar-day,
+    .dia-calendario {
+        min-height: 60px;
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    .calendar-event,
+    .evento {
+        font-size: 9px;
+        padding: 3px;
+    }
+
+    .schedule-item,
+    .horario-item,
+    .actividad-item {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .schedule-time,
+    .hora-actividad {
+        min-width: 60px;
+        font-size: 11px;
+    }
+
+    .playlist-cover {
+        width: 45px;
+        height: 45px;
+    }
+
+    .stat-card h3 {
+        font-size: 24px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 9px 14px;
+    }
+}
+
+/* ==========================================
+   PANTALLAS MUY PEQUEÑAS
+   ========================================== */
+
+@media (max-width: 480px) {
+
+    .calendar-day,
+    .dia-calendario {
+        min-height: 48px;
+        padding: 3px;
+    }
+
+    .calendar-grid {
+        gap: 3px;
+    }
+
+    .calendar-event,
+    .evento {
+        font-size: 8px;
+    }
+
+    .welcome-section h1 {
+        font-size: 21px;
+    }
+
+    .card-header {
+        padding: 14px;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    .music-card,
+    .playlist-card,
+    .musica-card {
+        padding: 16px;
+    }
+}
+
+/* ==========================================
+   ACCESIBILIDAD
+   ========================================== */
+
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    transition: 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
